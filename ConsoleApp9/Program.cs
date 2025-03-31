@@ -19,8 +19,8 @@ class Program
     private static readonly string WebAppUrl = "https://script.google.com/macros/s/AKfycbwoEsUQlug9tupfiLe8r40UckhszIqnBf-DxoICgdhdM2wvr7UKJRiNfY-ykVBXktP4/exec";
 
     private static readonly string ResumeFilePathUz = "/root/REZUME.doc";
-
     private static readonly string ResumeFilePathRu = "/root/РЕЗЮМЕ.doc";
+
     private static readonly ITelegramBotClient botClient = new TelegramBotClient(TelegramToken);
     private static Dictionary<long, string> userLanguages = new Dictionary<long, string>();
     private static Dictionary<long, string> userBranches = new Dictionary<long, string>();
