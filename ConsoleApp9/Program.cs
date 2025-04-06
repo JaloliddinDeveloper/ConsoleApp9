@@ -38,7 +38,6 @@ class Program
         );
 
         Console.WriteLine("Bot ishlayapti...");
-        Console.ReadLine();
     }
 
     private static async Task HandleUpdateAsync(ITelegramBotClient botClient, Update update, CancellationToken cancellationToken)
@@ -113,7 +112,6 @@ class Program
                 await botClient.SendTextMessageAsync(chatId, resumeMessage);
             }
         }
-        // Google Sheets'dan vakansiyaga oid ma'lumot olish
 
         else if (update.Message.Type == MessageType.Contact && update.Message.Contact != null)
         {
