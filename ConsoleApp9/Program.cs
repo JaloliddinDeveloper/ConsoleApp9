@@ -15,7 +15,7 @@ using System.Collections.Generic;
 
 class Program
 {
-    private static readonly string TelegramToken = "7590668760:AAHU7thIfi6Aniir6f34KpetFdcvfyeESIs";
+    private static readonly string TelegramToken = "7017362096:AAHHjMYoGwmkyafFhtquxRa8Ph3cVSUjqkQ";
     private static readonly string WebAppUrl = "https://script.google.com/macros/s/AKfycbwoEsUQlug9tupfiLe8r40UckhszIqnBf-DxoICgdhdM2wvr7UKJRiNfY-ykVBXktP4/exec";
 
     private static readonly string ResumeFilePathUz = "/root/REZUME.doc";
@@ -133,7 +133,7 @@ class Program
             await SendToWebApp(new { file = driveLink });
 
             string lang = userLanguages.ContainsKey(chatId) ? userLanguages[chatId] : "uz";
-            string successMessage = lang == "uz" ? "✅ Rezume saqlandi! Rahmat." : "✅ Резюме сохранено! Спасибо.";
+            string successMessage = lang == "uz" ? "✅ Rezume saqlandi Rahmat, tez orada xodimlarimiz siz bilan bog'lanishadi" : "✅ Резюме сохранено. Спасибо, в ближайшее время наши сотрудники свяжутся с вами.";
             await botClient.SendTextMessageAsync(chatId, successMessage);
         }
     }
