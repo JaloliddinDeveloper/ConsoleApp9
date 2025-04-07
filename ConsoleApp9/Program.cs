@@ -15,12 +15,10 @@ using System.Collections.Generic;
 
 class Program
 {
-    private static readonly string TelegramToken = "7017362096:AAHHjMYoGwmkyafFhtquxRa8Ph3cVSUjqkQ";
+    private static readonly string TelegramToken = "7134543309:AAFnG3DsSHASuk4gOpo2udVKvjot7h0MSxg";
     private static readonly string WebAppUrl = "https://script.google.com/macros/s/AKfycbwoEsUQlug9tupfiLe8r40UckhszIqnBf-DxoICgdhdM2wvr7UKJRiNfY-ykVBXktP4/exec";
-
     private static readonly string ResumeFilePathUz = "/root/REZUME.doc";
     private static readonly string ResumeFilePathRu = "/root/РЕЗЮМЕ.doc";
-
     private static readonly ITelegramBotClient botClient = new TelegramBotClient(TelegramToken);
     private static Dictionary<long, string> userLanguages = new Dictionary<long, string>();
     private static Dictionary<long, string> userBranches = new Dictionary<long, string>();
@@ -38,6 +36,7 @@ class Program
         );
 
         Console.WriteLine("Bot ishlayapti...");
+        Console.ReadLine();
     }
 
     private static async Task HandleUpdateAsync(ITelegramBotClient botClient, Update update, CancellationToken cancellationToken)
@@ -112,6 +111,7 @@ class Program
                 await botClient.SendTextMessageAsync(chatId, resumeMessage);
             }
         }
+        // Google Sheets'dan vakansiyaga oid ma'lumot olish
 
         else if (update.Message.Type == MessageType.Contact && update.Message.Contact != null)
         {
@@ -131,7 +131,7 @@ class Program
             await SendToWebApp(new { file = driveLink });
 
             string lang = userLanguages.ContainsKey(chatId) ? userLanguages[chatId] : "uz";
-            string successMessage = lang == "uz" ? "✅ Rezume saqlandi Rahmat, tez orada xodimlarimiz siz bilan bog'lanishadi" : "✅ Резюме сохранено. Спасибо, в ближайшее время наши сотрудники свяжутся с вами.";
+            string successMessage = lang == "uz" ? "✅ Rezume saqlandi Rahmat, tez orada xodimlarimiz siz bilan bog'lanishadi" : "✅Резюме сохранено Спасибо, наши сотрудники свяжутся с вами в ближайшее время.";
             await botClient.SendTextMessageAsync(chatId, successMessage);
         }
     }
